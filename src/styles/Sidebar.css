@@ -1,6 +1,5 @@
 .sidebar {
   display: flex;
-  background: teal;
   flex-direction: column;
   grid-column: 1 / 2;
   grid-row: 1 / 3;

@@ -1,22 +1,38 @@
 import "../styles/CardArea.css";
 import Card from "./Card.jsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+const ids = [1, 2, 3, 5, 6, 8, 10, 13, 14, 20];
+const url = "https://akabab.github.io/starwars-api/api/";
 
 export default function CardArea() {
-  const [cards, setCards] = useState("");
+  const [characters, setCharacters] = useState([]);
+  let cards;
+  useEffect(() => {
+    let ignore = false;
+    fetch(`${url}all.json`)
+      .then((response) => response.json())
+      .then((response) => {
+        if (!ignore) {
+          console.log("Fetching data from external api...");
+          setCharacters(response);
+        }
+      });
+    return () => {
+      ignore = true;
+    };
+  }, []);
 
-  return (
-    <div className="card-area">
-      <Card index='0' addCard={setCards} cards={cards} id="1" />
-      <Card index='1' addCard={setCards} cards={cards} id="2" />
-      <Card index='2' addCard={setCards} cards={cards} id="3" />
-      <Card index='3' addCard={setCards} cards={cards} id="4" />
-      <Card index='4' addCard={setCards} cards={cards} id="5" />
-      <Card index='5' addCard={setCards} cards={cards} id="6" />
-      <Card index='6' addCard={setCards} cards={cards} id="7" />
-      <Card index='7' addCard={setCards} cards={cards} id="8" />
-      <Card index='8' addCard={setCards} cards={cards} id="9" />
-      <Card index='9' addCard={setCards} cards={cards} id="10" />
-    </div>
-  );
+  if (characters.length > 0) {
+    cards = ids.map((id) => {
+      const character = characters.find((c) => c.id === id);
+      return (<Card
+        key={character.id}
+        name={character.name}
+        pic={character.image}
+      />);
+    });
+  }
+
+  return <div className="card-area">{cards}</div>;
 }
