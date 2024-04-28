@@ -1,8 +1,6 @@
-# React + Vite
+# Not The Card
+## you are looking for
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A memory card game for learning to manage state while interacting with an api.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+There are 10 card images drawn from an external API. The player has to select each card only once. Cards are shuffled after each choice. A score is shown at the end to see how many non-repeating guesses the player made.
