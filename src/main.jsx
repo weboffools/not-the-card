@@ -5,6 +5,9 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <App 
+    title="Not the Cards"
+    subtitle="you are looking for"
+  />
   </React.StrictMode>,
 )

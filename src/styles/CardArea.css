@@ -1,0 +1,9 @@
+.card-area {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  background: lightyellow;
+  grid: 1fr 1fr / 1fr 1fr 1fr 1fr 1fr;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}

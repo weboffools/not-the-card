@@ -1,0 +1,10 @@
+.sidebar {
+  display: flex;
+  background: teal;
+  flex-direction: column;
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  font-size: 1.25rem;
+}
+
+
