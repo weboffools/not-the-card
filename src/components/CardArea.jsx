@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 const ids = [1, 2, 3, 5, 6, 8, 10, 13, 14, 20];
 const url = "https://akabab.github.io/starwars-api/api/";
 
-export default function CardArea() {
+export default function CardArea({updateScore}) {
   const [characters, setCharacters] = useState([]);
   let cards;
   useEffect(() => {
@@ -30,6 +30,7 @@ export default function CardArea() {
         key={character.id}
         name={character.name}
         pic={character.image}
+        updateScore={updateScore}
       />);
     });
   }
