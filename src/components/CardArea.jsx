@@ -1,13 +1,26 @@
 import "../styles/CardArea.css";
 import Card from "./Card.jsx";
 import { useState, useEffect } from "react";
+import shuffle from "../util/shuff";
 
-const ids = [1, 2, 3, 5, 6, 8, 10, 13, 14, 20];
 const url = "https://akabab.github.io/starwars-api/api/";
 
-export default function CardArea({ score, updateScore}) {
+export default function CardArea({
+  score,
+  updateScore,
+  ids,
+  changeIds,
+  end,
+  endGame,
+}) {
   const [characters, setCharacters] = useState([]);
   let cards;
+
+  function handleShuffle() {
+    const temp = shuffle([...ids]);
+    changeIds(temp);
+  }
+
   useEffect(() => {
     let ignore = false;
     fetch(`${url}all.json`)
@@ -26,13 +39,17 @@ export default function CardArea({ score, updateScore}) {
   if (characters.length > 0) {
     cards = ids.map((id) => {
       const character = characters.find((c) => c.id === id);
-      return (<Card
-        key={character.id}
-        name={character.name}
-        pic={character.image}
-        score={score}
-        updateScore={updateScore}
-      />);
+      return (
+        <Card
+          key={character.id}
+          name={character.name}
+          pic={character.image}
+          score={score}
+          updateScore={updateScore}
+          shuffle={handleShuffle}
+          endGame={endGame}
+        />
+      );
     });
   }
 

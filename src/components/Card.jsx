@@ -1,16 +1,15 @@
 import "../styles/Card.css";
 import { useState } from "react";
 
-export default function Card({ pic, name, updateScore, score }) {
+export default function Card({ pic, name, updateScore, shuffle, endGame }) {
   const [clicked, setClicked] = useState(false);
 
   function handleClick() {
     if (clicked) {
-      alert(`You already clicked that card! Your final score is ${score}`);
-      updateScore(0);
-      setClicked(false);
+      endGame();
     } else {
       updateScore((score) => score + 1);
+      shuffle();
       setClicked(true);
     }
   }
