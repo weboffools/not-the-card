@@ -1,9 +1,9 @@
 import Score from "./Score";
 import "../styles/Sidebar.css";
-export default function Sidebar({ score }) {
+export default function Sidebar({ score, best }) {
   return (
     <div className="sidebar">
-      <Score score={score} />
+      <Score score={score} best={best}/>
     </div>
   );
 }

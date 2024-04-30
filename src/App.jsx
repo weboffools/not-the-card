@@ -6,9 +6,13 @@ function App({ title, subtitle }) {
   const [score, setScore] = useState(0);
   const [ids, setIds] = useState([1, 2, 3, 5, 6, 8, 10, 13, 14, 20]);
   const [end, setEnd] = useState(false);
+  const [best, setBest] = useState(0);
 
   function handleEnd() {
     setEnd(true);
+    if (score > best) {
+      setBest(score);
+    }
   }
 
   function handleRestart() {
@@ -23,7 +27,7 @@ function App({ title, subtitle }) {
           <h1>{title}</h1>
           <h2>{subtitle}</h2>
         </div>
-        <Sidebar score={score} />
+        <Sidebar score={score} best={best} />
         <CardArea
           score={score}
           updateScore={setScore}
